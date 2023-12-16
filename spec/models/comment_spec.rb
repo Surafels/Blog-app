@@ -6,8 +6,8 @@ RSpec.describe Comment, type: :model do
 
   describe 'validations' do
     it 'should validate presence of text' do
-      comment = Comment.create(post: post, user: user, text: 'Hello')
-            expect(comment).to be_valid
+      comment = Comment.create(post:, user:, text: 'Hello')
+      expect(comment).to be_valid
     end
 
     it 'is invalid if comments_counter is negative' do
@@ -25,10 +25,10 @@ RSpec.describe Comment, type: :model do
       expect(post).to be_valid
     end
   end
-    describe 'after_save' do
-      it 'should update the post comments counter' do
-        comment = Comment.create(post: post, user: user, text: 'Hello')
-        expect { comment.save }.to change { post.comments_counter }.by(1)
-      end
+  describe 'after_save' do
+    it 'should update the post comments counter' do
+      comment = Comment.create(post:, user:, text: 'Hello')
+      expect { comment.save }.to change { post.comments_counter }.by(1)
+    end
   end
 end
