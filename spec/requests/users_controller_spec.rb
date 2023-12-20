@@ -21,11 +21,10 @@ RSpec.describe 'UsersController', type: :request do
   end
 
   describe 'GET/show' do
-
     it 'returns a correct and successful response' do
-     get users_path(user.id)
-    expect(response).to have_http_status(:success)
-    expect(response.status).to eq(200)
+      get users_path(user.id)
+      expect(response).to have_http_status(:success)
+      expect(response.status).to eq(200)
     end
 
     it 'renders the show template' do
