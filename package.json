@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "stylelint-config-standard": "^35.0.0",
+    "stylelint-scss": "^6.0.0"
+  }
+}

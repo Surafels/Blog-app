@@ -10,7 +10,7 @@
   <div class="card mb-2">
     <div class="card-body">
       <% @post.comments.each do |comment| %>
-        <p class="card-text"><%= comment.author.name %>: <%= comment.text %></p>
+        <p class="card-text"><%= comment.user.name %>: <%= comment.text %></p>
       <% end %>
     </div>
   </div>

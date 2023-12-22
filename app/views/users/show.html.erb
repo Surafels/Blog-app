@@ -19,8 +19,12 @@
    <% if @recent_posts.present?%>
    <% @recent_posts.each do |post| %>
    <div class="card mb-2">
+    <%= link_to user_post_path(@user, post), class: 'no-link' do %>
    <div class="card-body">
     <h6 class="card-title"><%=post.title%></h6>
+
+    <% end %>
+
     <p class="card-text"><%=post.text%></p>
     <p class="card-link text-end">comments: <%=post.comments_counter%>, likes: <%= post.likes_counter%></p>
    </div>
