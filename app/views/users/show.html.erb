@@ -1,1 +1,42 @@
-<h1>Here is the list of posts for the user:</h1>
+
+    <div class="sub-container pb-4" style="max-width: 540px;">
+    <div class="col-md-4">
+        <img src = "<%= @user.photo_url%>"  class="img-fluid img-thumbnail rounded-start" alt =<%= @user.name%>>
+    </div>
+  <%= link_to user_posts_path(@user), class: 'no-link col-md-8' do %>
+
+   <div class="card body">
+    <h5 class="card-titile"><%= @user.name%></h5>
+    <p class="card-text text-end">Number of posts: <%= @user.posts_counter%></p>
+   </div> 
+   <% end %>
+   <div class="card mb-3 mt-3">
+   <div class="card-body">
+    <h5 class="card-title">Bio</h5>
+    <p class="card-text"><%= @user.bio%></p>
+   </div>
+   </div>
+   <% if @recent_posts.present?%>
+   <% @recent_posts.each do |post| %>
+   <div class="card mb-2">
+    <%= link_to user_post_path(@user, post), class: 'no-link' do %>
+   <div class="card-body">
+    <h6 class="card-title"><%=post.title%></h6>
+
+    <% end %>
+
+    <p class="card-text"><%=post.text%></p>
+    <p class="card-link text-end">comments: <%=post.comments_counter%>, likes: <%= post.likes_counter%></p>
+   </div>
+   </div>
+<% end %>
+<div class="text-center">
+<%= link_to user_posts_path(user_id: @user.id) do %>
+  <button type="button" class="btn btn-primary">See all posts</button>
+  </div>
+<% end %>
+
+      <% else %>
+      <p>There is no posts</p>
+      <% end %>
+</div>
