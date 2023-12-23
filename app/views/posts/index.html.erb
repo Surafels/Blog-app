@@ -6,7 +6,7 @@
     </div>
     <div class="card-body">
       <h5 class ="card-title"><%= @user.name %></h5>
-      <p class="card-text text-end">Number of posts: <%= @user.posts_counter %></p>
+      <p class="card-text text-end">Number of posts: <%= @user.posts_counter || 0 %></p>
     </div>
     </div>
     </div>
@@ -19,8 +19,13 @@
         <h5 class="card-title"><%= post.title%></h5>
         <% end %>
         <p class="card-text"><%= post.text%></p>
-        <p class="card-text text-end">Comment: <%= post.comments_counter%>, Like: <%= post.likes_counter%></p>
+        <p class="card-text text-end">Comment: <%= post.comments_counter || 0 %>, Like: <%= post.likes_counter || 0 %></p>
 </div>
+ <div class="comment-like">
+            <%= link_to 'Add Comment',  new_user_post_comment_path(@user, post), class: 'col-md-3 m-3 btn btn-secondary comment-btn' %>
+            <%= button_to 'Like',  user_post_likes_path(@user, post), method: :post, class: 'col-md-2 m-3 btn btn-secondary' %>
+        </div>
+
 <% post.most_recent_comments.each do |comment|%>
 <div class="card mb-2">
     <div class="card-body">
