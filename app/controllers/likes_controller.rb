@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     if @like.save
       redirect_to user_posts_path(@user)
     else
-      redirect_to user_posts_path(@ser), alert: 'Error creating like.'
+      redirect_to user_posts_path(@user), alert: 'Error creating like.'
     end
   end
 end
