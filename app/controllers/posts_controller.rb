@@ -15,8 +15,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_id(params[:user_id])
     @post = current_user.posts.build(post_params)
+    @post.comments_counter = 0
+    @post.likes_counter = 0
+
     if @post.save
       redirect_to user_posts_path(current_user)
     else

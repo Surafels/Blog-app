@@ -10,12 +10,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
 
-    @user = Post.find(params[:post_id]).user
-
     if @comment.save
-      redirect_to user_posts_path(@user), notice: 'Comment was successfully created.'
+      redirect_to user_posts_path(current_user), notice: 'Comment was successfully created.'
     else
-      redirect_to user_posts_path(@user), alert: 'Error creating comment.'
+      redirect_to user_posts_path(current_user), alert: 'Error creating comment.'
     end
   end
 
