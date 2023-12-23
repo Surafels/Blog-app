@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
 
-    @user = Post.find(params[:post_id]).author
+    @user = Post.find(params[:post_id]).user
 
     if @comment.save
       redirect_to user_posts_path(@user), notice: 'Comment was successfully created.'

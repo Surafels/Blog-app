@@ -10,12 +10,14 @@
     <p class="card-text text-end">Number of posts: <%= @user.posts_counter%></p>
    </div> 
    <% end %>
+
    <div class="card mb-3 mt-3">
    <div class="card-body">
     <h5 class="card-title">Bio</h5>
     <p class="card-text"><%= @user.bio%></p>
    </div>
    </div>
+
    <% if @recent_posts.present?%>
    <% @recent_posts.each do |post| %>
    <div class="card mb-2">
@@ -26,11 +28,17 @@
     <% end %>
 
     <p class="card-text"><%=post.text%></p>
-    <p class="card-link text-end">comments: <%=post.comments_counter%>, likes: <%= post.likes_counter%></p>
+    <p class="card-link text-end">comments: <%=post.comments_counter || 0 %>, likes: <%= post.likes_counter || 0 %></p>
    </div>
    </div>
-<% end %>
-<div class="text-center">
+
+<div class="comment-like">
+       <%= link_to 'Add Comment',  new_user_post_comment_path(@user, post), class: 'col-md-3 m-3 btn btn-secondary comment-btn' %>
+       <%= button_to 'Like',  user_post_likes_path(@user, post), method: :post, class: 'col-md-2 m-3 btn btn-secondary' %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
 <%= link_to user_posts_path(user_id: @user.id) do %>
   <button type="button" class="btn btn-primary">See all posts</button>
   </div>
@@ -39,4 +47,8 @@
       <% else %>
       <p>There is no posts</p>
       <% end %>
+  <div class="text-center mt-3">
+    <%= link_to 'Create New Post', new_user_post_path(user_id: @user) , class: 'btn btn-success' %>
+  </div>
+  
 </div>
