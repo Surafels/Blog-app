@@ -26,7 +26,7 @@
             <%= button_to 'Like',  user_post_likes_path(@user, post), method: :post, class: 'col-md-2 m-3 btn btn-secondary' %>
         </div>
 
-<% post.most_recent_comments.each do |comment|%>
+<% post.most_recent_comments.includes(:author).each do |comment|%>
 <div class="card mb-2">
     <div class="card-body">
         <p class="card-text"><%= comment.user.name%> :<%= comment.text%></p>
