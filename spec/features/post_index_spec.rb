@@ -17,6 +17,10 @@ RSpec.describe 'Post', type: :feature do
       visit user_posts_path(@user1)
       expect(page).to have_css("img[src*='https://unsplash.com/photos/1.jpg']")
     end
+    it "should display the user's username" do
+      visit user_posts_path(@user1)
+      expect(page).to have_content(@user1.name)
+    end
 
   end
 end
