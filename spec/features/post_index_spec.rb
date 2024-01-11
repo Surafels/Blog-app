@@ -13,6 +13,10 @@ RSpec.describe 'Post', type: :feature do
     @like2 = Like.create!(post: @post1, author: @user1)
   end
   describe 'Index page' do
+    it "should display the user's profile picture" do
+      visit user_posts_path(@user1)
+      expect(page).to have_css("img[src*='https://unsplash.com/photos/1.jpg']")
+    end
 
   end
 end
