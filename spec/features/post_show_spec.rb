@@ -22,6 +22,26 @@ RSpec.describe 'Post', type: :feature do
       visit user_post_path(@user1, @post1)
       expect(page).to have_content(@post1.comments_counter)
     end
-
+    it "should display the post's number of likes" do
+      visit user_post_path(@user1, @post1)
+      expect(page).to have_content(@post1.likes_counter)
+    end
+    it "should display the post's body" do
+      visit user_post_path(@user1, @post1)
+      expect(page).to have_content(@post1.text)
+    end
+    it 'should display the username of each commentator' do
+      visit user_post_path(@user1, @post1)
+      expect(page).to have_content(@user1.name)
+    end
+    it 'should display the text of each comment' do
+      visit user_post_path(@user1, @post1)
+      expect(page).to have_content(@comment1.text)
+      expect(page).to have_content(@comment2.text)
+    end
+    it "Should display the 'Back to Posts' button" do
+      visit user_post_path(@user1, @post1)
+      expect(page).to have_link('Back to Posts')
+    end
   end
 end
