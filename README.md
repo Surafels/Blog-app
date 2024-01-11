@@ -85,6 +85,9 @@ rspec
 - GitHub: [@githubhandle](https://github.com/Surafels)
 - Twitter: [@twitterhandle](https://twitter.com/SurafelSamson2)
 - GitHub: [@githubhandle](https://github.com/Sami-ullah-tufail)
+  
+  👤 **Burhan Uddin**
+- GitHub: [@githubhandle](https://github.com/bhobserver)
    
 
 
