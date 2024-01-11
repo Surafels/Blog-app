@@ -21,6 +21,14 @@ RSpec.describe 'Post', type: :feature do
       visit user_posts_path(@user1)
       expect(page).to have_content(@user1.name)
     end
+    it "should display the user's number of posts" do
+      visit user_posts_path(@user1)
+      expect(page).to have_content(@user1.posts_counter)
+    end
+    it "should display the post's title" do
+      visit user_posts_path(@user1)
+      expect(page).to have_content(@post1.title)
+    end
 
   end
 end
