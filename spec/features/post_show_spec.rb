@@ -5,8 +5,8 @@ RSpec.describe 'Post', type: :feature do
                           posts_counter: 1)
     @post1 = Post.create!(author: @user1, title: 'First Post', text: 'First text', comments_counter: 2,
                           likes_counter: 1)
-    @comment1 = Comment.create!(post: @post1, author: @user1, text: 'Hello David!')
-    @comment2 = Comment.create!(post: @post1, author: @user1, text: 'Hello David!')
+    @comment1 = Comment.create!(post: @post1, user: @user1, text: 'Hello David!')
+    @comment2 = Comment.create!(post: @post1, user: @user1, text: 'Hello David!')
     @like1 = Like.create!(post: @post1, author: @user1)
   end
   describe 'Show page' do
