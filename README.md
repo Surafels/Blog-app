@@ -53,7 +53,7 @@ Ruby on Rails Visual Studia C
 
 In order to use this project.. Clone this repository to your desired folder by pasting this command in your command line interface:
 
-  https://https://github.com/Surafels/Blog-app.git
+  https://github.com/Surafels/Blog-app.git
 
 ### Prerequisites <a name="prerequisites"></a>
 
