@@ -29,6 +29,15 @@ RSpec.describe 'Post', type: :feature do
       visit user_posts_path(@user1)
       expect(page).to have_content(@post1.title)
     end
+    it "should display some of the post's body" do
+      visit user_posts_path(@user1)
+      expect(page).to have_content(@post1.text)
+    end
+    it 'should display the first comments on a post' do
+      visit user_posts_path(@user1)
+      expect(page).to have_content(@comment1.text)
+      expect(page).to have_content(@comment2.text)
+    end
 
   end
 end
