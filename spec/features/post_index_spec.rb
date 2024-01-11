@@ -50,5 +50,13 @@ RSpec.describe 'Post', type: :feature do
       visit user_posts_path(@user1)
       expect(page).to have_content('Create New Post')
     end
+    it 'to show the Pagination buttons' do
+      expect(page).to have_content('Pagination')
+    end
+
+    it 'When I click on a post, it redirects me to that post show page.' do
+      click_link(@post.title)
+      expect(current_path).to match user_post_path(@user, @post)
+    end
   end
 end
