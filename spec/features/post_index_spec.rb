@@ -46,6 +46,9 @@ RSpec.describe 'Post', type: :feature do
       visit user_posts_path(@user1)
       expect(page).to have_content(@post1.likes_counter)
     end
-
+    it 'Should display the section to create a new post' do
+      visit user_posts_path(@user1)
+      expect(page).to have_content('Create New Post')
+    end
   end
 end
