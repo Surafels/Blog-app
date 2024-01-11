@@ -38,6 +38,14 @@ RSpec.describe 'Post', type: :feature do
       expect(page).to have_content(@comment1.text)
       expect(page).to have_content(@comment2.text)
     end
+    it 'should display the number of comments on a post' do
+      visit user_posts_path(@user1)
+      expect(page).to have_content(@post1.comments_counter)
+    end
+    it 'should display the number of likes on a post' do
+      visit user_posts_path(@user1)
+      expect(page).to have_content(@post1.likes_counter)
+    end
 
   end
 end
