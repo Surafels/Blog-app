@@ -7,6 +7,7 @@ RSpec.describe 'Post', type: :feature do
                           likes_counter: 2)
     @post2 = Post.create!(author: @user1, title: 'Second Post', text: 'Second text', comments_counter: 0,
                           likes_counter: 0)
+
     @comment1 = Comment.create!(post: @post1, user: @user1, text: 'hello David')
     @comment2 = Comment.create!(post: @post1, user: @user1, text: 'hello David')
     @like1 = Like.create!(post: @post1, author: @user1)
@@ -50,13 +51,35 @@ RSpec.describe 'Post', type: :feature do
       visit user_posts_path(@user1)
       expect(page).to have_content('Create New Post')
     end
-    it 'to show the Pagination buttons' do
-      expect(page).to have_content('Pagination')
-    end
 
-    it 'When I click on a post, it redirects me to that post show page.' do
-      click_link(@post.title)
-      expect(current_path).to match user_post_path(@user, @post)
+    it 'displays a section for pagination if there are more posts' do
+      @user1 = User.create!(name: 'David', photo_url: 'https://unsplash.com/photos/1.jpg', bio: 'Teacher from Mexico.',
+                            posts_counter: 2)
+
+      30.times do
+        Post.create!(
+          author: @user1,
+          title: 'Sample Post',
+          text: 'Lorem ipsum dolor sit amet.',
+          comments_counter: 0,
+          likes_counter: 0
+        )
+      end
+
+      visit user_posts_path(user_id: @user1.id)
+
+      expect(page).to have_selector('.pagination', visible: true)
+    end
+    it 'should redirect to the post show page when clicking on a post' do
+      visit user_posts_path(@user1)
+
+      # Assuming there is at least one post
+      first_post = @posts.first
+
+      click_link(first_post.title)
+
+      # Check if it redirects to the post show page
+      expect(page).to have_current_path(user_post_path(@user1, first_post))
     end
   end
 end

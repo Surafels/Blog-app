@@ -70,3 +70,7 @@ group :test do
 
   gem 'selenium-webdriver'
 end
+group :test do
+  gem 'factory_bot_rails'
+end
+gem 'will_paginate'
