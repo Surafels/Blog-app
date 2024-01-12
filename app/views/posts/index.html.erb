@@ -14,7 +14,7 @@
 <% if @posts.present? %>
 <% @posts.each do |post|%>
 <div class="card mb-2">
-    <%= link_to  user_path(@user, post), class: 'col-md-8 no-link' do %>
+    <%= link_to  user_post_path(@user, post), class: 'col-md-8 no-link' do %>
     <div class="card-body">
         <h5 class="card-title"><%= post.title%></h5>
         <% end %>
@@ -26,7 +26,7 @@
             <%= button_to 'Like',  user_post_likes_path(@user, post), method: :post, class: 'col-md-2 m-3 btn btn-secondary' %>
         </div>
 
-<% post.most_recent_comments.each do |comment|%>
+<% post.most_recent_comments.includes(:user).each do |comment|%>
 <div class="card mb-2">
     <div class="card-body">
         <p class="card-text"><%= comment.user.name%> :<%= comment.text%></p>
@@ -40,6 +40,7 @@
         <%= link_to 'Create New Post', new_user_post_path(user_id: @user.id) , class: 'btn btn-success' %>
     </div>
 
+<%= will_paginate @posts %>
     <% else %>
 
     <p>There is no posts for this user</p>

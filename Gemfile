@@ -69,4 +69,8 @@ group :test do
   gem 'rails-controller-testing'
 
   gem 'selenium-webdriver'
+
+  gem 'factory_bot_rails'
 end
+
+gem 'will_paginate'
