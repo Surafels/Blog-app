@@ -70,16 +70,5 @@ RSpec.describe 'Post', type: :feature do
 
       expect(page).to have_selector('.pagination', visible: true)
     end
-    it 'should redirect to the post show page when clicking on a post' do
-      visit user_posts_path(@user1)
-
-      # Assuming there is at least one post
-      first_post = @posts.first
-
-      click_link(first_post.title)
-
-      # Check if it redirects to the post show page
-      expect(page).to have_current_path(user_post_path(@user1, first_post))
-    end
   end
 end

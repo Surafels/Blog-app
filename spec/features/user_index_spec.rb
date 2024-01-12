@@ -18,12 +18,6 @@ RSpec.describe 'User', type: :feature do
       expect(page).to have_content(@user3.name)
     end
 
-    # it 'should display the profile photo of all other users' do
-    #   visit users_path
-    #   expect(page).to have_css("img[src*='https://unsplash.com/photos/1.jpg']")
-    #   expect(page).to have_css("img[src*='https://unsplash.com/photos/2.jpg']")
-    #   expect(page).to have_css("img[src*='https://unsplash.com/photos/3.jpg']")
-    # end
     it "should display the user's profile picture" do
       visit user_posts_path(@user1)
       expect(page).to have_css("img[src*='https://unsplash.com/photos/1.jpg']")
