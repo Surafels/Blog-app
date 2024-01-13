@@ -9,6 +9,8 @@ gem 'rails', '~> 7.1.2'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
+gem 'devise'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -69,7 +71,9 @@ group :test do
   gem 'rails-controller-testing'
 
   gem 'selenium-webdriver'
+end
 
+group :test do
   gem 'factory_bot_rails'
 end
 
