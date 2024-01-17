@@ -12,6 +12,10 @@ class User < ApplicationRecord
     posts.order(created_at: :desc).limit(limit)
   end
 
+  def set_default_posts_counter
+    self.posts_counter ||= 0
+  end
+
   validates :name, presence: true
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end
