@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    root 'devise/sessions#new'
+    root 'users#index'
     get '/user_sign_out', to: 'devise/sessions#new'
   end
 
