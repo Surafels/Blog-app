@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   def show
     @user = User.includes(:posts).find(params[:user_id])
     @post = @user.posts.find(params[:id])
-   
   end
 
   def new
@@ -17,7 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @post = .posts.build(post_params)
+    @post = @user.posts.build(post_params)
     @post.comments_counter = 0
     @post.likes_counter = 0
 
