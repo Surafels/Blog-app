@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # devise_for :users, controllers: { confirmations: 'confirmations' }
 
   devise_scope :user do
-    root 'devise/sessions#new'
-    # get '/user_sign_out', to: 'devise/sessions#new'
+    root 'users#index'
+    get '/user_sign_out', to: 'devise/sessions#new'
   end
 
   get '/user_sign_out', to: 'users#user_sign_out', as: :user_sign_out
