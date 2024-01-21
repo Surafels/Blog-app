@@ -1,12 +1,12 @@
 class LikesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @like = @post.likes.build(author: current_user)
-
+    @user = User.find(params[:user_id])
+    @like = @post.likes.build(author: @user)
     if @like.save
-      redirect_to user_posts_path(current_user)
+      redirect_to user_posts_path(@user)
     else
-      redirect_to user_posts_path(current_user), alert: 'Error creating like.'
+      redirect_to user_posts_path(@user), alert: 'Error creating like.'
     end
   end
 end

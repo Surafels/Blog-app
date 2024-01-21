@@ -15,6 +15,12 @@
      <div class= 'container pt-5'>
       <%= yield %>
       </div>
-
+   <div class="text-center">
+    <% if user_signed_in? %>
+      <%= link_to 'Sign Out', user_sign_out_path, method: :get %>
+    <% else %>
+      <%= link_to 'Sign In', new_user_session_path %>
+    <% end %>
+  </div>
   </body>
 </html>
