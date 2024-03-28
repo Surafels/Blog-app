@@ -1,3 +1,5 @@
+<!-- <img src="https://github.com/Surafels/Blog-app/blob/dev/app/assets/images/blog%20app%20img.JPG" alt="Blog app Screenshot"> -->
+
 <a name="readme-top"></a>
 
 # 📗 Table of Contents
